@@ -1,0 +1,19 @@
+col1, col2, col3, col4, = st.columns([1, 1, 1,1])  # Adjust column ratios as needed
+
+    with col1:
+        if st.button("Multiple Choice"):
+            st.write("Button 1 clicked")
+
+    with col2:
+        if st.button("True or False"):
+            st.write("Button 2 clicked")
+    with col3:
+        if st.button("Fill in the Blanks"):
+            st.write("Button 2 clicked")
+
+
+  # Add a selectbox to the sidebar:
+    add_selectbox = st.sidebar.selectbox(
+    'How would you like to be contacted?',
+    ('Email', 'Home phone', 'Mobile phone')
+    )

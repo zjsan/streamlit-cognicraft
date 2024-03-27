@@ -1,25 +1,27 @@
 import streamlit as st
-import torch
-from transformers import AutoTokenizer, AutoModel
+import time
+"""Trying out first the Streamlit environment - Testing documenations for the development of CogniCraft"""
 
-model_name = "facebook/llama-7b-base"  # Adjust for different Llama models
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModel.from_pretrained(model_name)
 
-def generate_text(prompt):
-    encoded_input = tokenizer(prompt, return_tensors="pt")
-    with torch.no_grad():
-        outputs = model(**encoded_input)
-    generated_ids = outputs.last_hidden_state.argmax(dim=-1)
-    return tokenizer.decode(generated_ids[0], skip_special_tokens=True)
+def set_send_input():
+    st.session_state.send_input = True
 
-st.title("Llama Text Generation App")
-user_prompt = st.text_input("Enter your prompt:")
 
-if st.button("Generate Text"):
-    if user_prompt:
-        generated_text = generate_text(user_prompt)
-        st.write("Generated Text:")
-        st.write(generated_text)
-    else:
-        st.warning("Please enter a prompt.")
+def main():
+    st.title("ZAI GPT 1.0 - An interactive chatbot for lonely people like me :(")
+    chat_container = st.container()
+
+    user_input = st.text_input("Enter your message here", key ="user_input", on_change=set_send_input)    
+
+    
+    send_button = st.button("Send", key="send_button")
+    if send_button or :
+        llm_response = "This is a response from the LLM model"
+        with chat_container:
+            st.chat_message("user").write(user_input)
+            st.chat_message("ai").write("here is an answer")
+
+    
+
+if __name__ == "__main__":
+    main()
